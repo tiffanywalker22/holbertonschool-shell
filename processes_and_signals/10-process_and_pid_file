@@ -1,19 +1,13 @@
 #!/usr/bin/env bash
 # script creates files, displays multiple texts, and deletes file
 
-rmfile_n_exit()
-{
-    rm -f /var/run/holbertonscript.pid;
-    exit
-}
-trap "echo 'Y U no love me?!'" SIGINT
-trap "echo 'I hate the kill command'; rmfile_n_exit" SIGTERM
-trap "echo 'I hate the kill command'; rmfile_n_exit" SIGQUIT
-
-
-echo $$ >> /var/run/holbertonscript.pid
-while (true)
+echo $$ > /var/run/myscript.pid
+i=0
+while [ $i -lt 1 ]
 do
-    echo 'To infinity and beyond'
-    sleep 2
+	echo "To infinity and beyond"
+	sleep 2
+	trap 'echo "I hate the kill command" ; rm -rf  /var/run/myscript.pid; exit' SIGTERM
+	trap 'echo "Y U no love me?!"' SIGINT
+	trap 'rm -rf /var/run/holbertonscript.pid; exit' SIGQUIT
 done

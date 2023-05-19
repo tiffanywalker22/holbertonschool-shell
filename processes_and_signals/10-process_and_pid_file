@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
 # script creates files, displays multiple texts, and deletes file
 
-rmfile_n_exit()
-{
-    rm -f /var/run/holbertonscript.pid;
+file=/var/run/holbertonscript.pid
+function finishQuit {
+    sudo rm $file
     exit
 }
+function finishTerm {
+    echo 'I hate the kill command'
+    sudo rm $file
+    exit
+}
+trap finishTerm SIGTERM
+trap finishQuit SIGQUIT
 trap "echo 'Y U no love me?!'" SIGINT
-trap "echo 'I hate the kill command'; rmfile_n_exit" SIGTERM
-trap "echo 'I hate the kill command'; rmfile_n_exit" SIGQUIT
-
-
-echo $$ >> /var/run/holbertonscript.pid
-while (true)
+sudo bash -c "echo $$ > $file"
+while ((1))
 do
-    echo 'To infinity and beyond'
+    echo "To infinity and beyond"
     sleep 2
 done

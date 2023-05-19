@@ -2,7 +2,7 @@
 #script displays contents of file /etc/passwd, script only displays user
 #name, user id, and home directory path for user
 
-file="/etc/passwd"
+FILE="/etc/passwd"
 
 while read LINE
 do

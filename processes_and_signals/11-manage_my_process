@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#script that makes subprocesses
+#script that creates subprocesses
 
 if [ "$1" == "start" ]
 then
@@ -21,3 +21,4 @@ then
 else
 	echo "Usage: manage_my_process {start|stop|restart}"
 fi
+

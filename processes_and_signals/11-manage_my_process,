@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#script that creates subprocesses
+#script that makes subprocesses
 
 if [ "$1" == "start" ]
 then
